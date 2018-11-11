@@ -31,18 +31,19 @@ $(PLATFORMS):
 	GOOS="$@" GOARC=$(BUILDARC) go build $(LDFLAGS) -o $(BUILDPATH)/$@/plugins/bin/$(BINARY)
 	@mkdir -p $(BUILDPATH)/$@/plugins/etc/
 	@cp $(BINARY).json $(BUILDPATH)/$@/plugins/etc/$(BINARY).conf
-	@sed -i '/version/s/[0-9]*\.[0-9]*\.[0-9]*/$(VERSION)/g' $(BUILDPATH)/$@/plugins/project.yml
 	@echo "finish build \033[34m$(BUILDPATH)/$@/plugins/bin/$(BINARY)\033[0m\n"
 
-package: $(PLATFORMS)
+package: 
 	@mkdir -p $(PACKAGEPATH) 
 	@for PLATFORM in $(PLATFORMS); \
 	do \
 		PACKAGEFILE=$(PACKAGEPATH)/$(BINARY)-$$PLATFORM-$(VERSION)-x86_64.tgz ; \
+		if [ -d $(BUILDPATH)/$$PLATFORM ]; then \
 		echo "packaging \033[34m$$PACKAGEFILE\033[0m"; \
 		rm -rf $$PACKAGEFILE ;\
 		tar --group=root --owner=root -zcf $$PACKAGEFILE -C $(BUILDPATH)/$$PLATFORM plugins ; \
 		echo "finish package \033[34m$$PACKAGEFILE\033[0m\n" ; \
+		fi \
 	done
 
 .PHONY:tool
