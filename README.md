@@ -5,11 +5,6 @@ a bk-cmdb data collector demo
 go get github.com/wusendong/cmdb_hostsnap
 ```
 
-### run
-```
-go get github.com/wusendong/cmdb_hostsnap  -c cmdb_hostsnap.json
-```
-
 ### build
 ```
 make linux
@@ -19,6 +14,12 @@ make linux
 
 ```
 make package
+```
+
+### run
+
+```
+go run github.com/wusendong/cmdb_hostsnap daemon -c cmdb_hostsnap.json
 ```
 
 ### development

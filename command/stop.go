@@ -35,12 +35,12 @@ func StopCmd() cli.Command {
 				fmt.Fprintf(os.Stderr, "pid %d not exist", pid)
 			}
 
-			signal := syscall.SIGHUP
+			signal := syscall.SIGQUIT
 			err = proc.Signal(signal)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "signal %v to pid %d faile: %v", signal, pid, err)
 			}
-			fmt.Print("reload success")
+			fmt.Print("stop success")
 		},
 	}
 }

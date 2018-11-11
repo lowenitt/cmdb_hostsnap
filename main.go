@@ -36,11 +36,13 @@ var (
 )
 
 func cmdNotFound(c *cli.Context, command string) {
-	panic(fmt.Errorf("Unrecognized command: %s", command))
+	fmt.Fprintf(os.Stderr, "Unrecognized command: %s", command)
 }
 
 func onUsageError(c *cli.Context, err error, isSubcommand bool) error {
-	panic(fmt.Errorf("Usage error, please check your command"))
+	err = fmt.Errorf("Usage error, please check your command: %s", err)
+	fmt.Fprintf(os.Stderr, err.Error())
+	return err
 }
 
 func main() {
@@ -68,6 +70,7 @@ func main() {
 	a.Commands = []cli.Command{
 		command.DaemonCmd(),
 		command.ReloadCmd(),
+		command.StopCmd(),
 	}
 	a.CommandNotFound = cmdNotFound
 	a.OnUsageError = onUsageError

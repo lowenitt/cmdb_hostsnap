@@ -44,6 +44,8 @@ func NewHostsnap(configfile string) (*Hostsnap, error) {
 	if err != nil {
 		return nil, fmt.Errorf("read config file %s error %v", configfile, err)
 	}
+
+	logrus.Infof("NewHostsnap with config: %#v ", conf)
 	pub, err := publiser.NewRedisPubliser(conf.Redis)
 	if err != nil {
 		return nil, fmt.Errorf("NewRedisPubliser error %v", err)
@@ -96,6 +98,7 @@ func (snap *Hostsnap) Run() error {
 }
 
 func (snap *Hostsnap) Stop() error {
+	logrus.Info("hostsnap stop")
 	snap.pub.Close()
 	snap.cancel()
 	return nil
@@ -110,6 +113,8 @@ func (snap *Hostsnap) Reload() error {
 	if err != nil {
 		return fmt.Errorf("NewRedisPubliser error %v", err)
 	}
+
+	logrus.Infof("reload with config: %#v", conf)
 
 	snap.confLock.Lock()
 	snap.pub = pub
@@ -148,8 +153,7 @@ const hostsnapExample = `{
 					"cores": 1,
 					"modelName": "Intel(R) Xeon(R) CPU E5-26xx v3",
 					"mhz": 2294.01,
-					"cacheSize": 4096,
-					
+					"cacheSize": 4096
 				}
 			],
 			"per_usage": [
