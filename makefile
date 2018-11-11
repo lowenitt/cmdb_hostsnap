@@ -30,7 +30,7 @@ $(PLATFORMS):
 	@echo "building \033[34m$(BUILDPATH)/$@/plugins/bin/$(BINARY)\033[0m"
 	GOOS="$@" GOARC=$(BUILDARC) go build $(LDFLAGS) -o $(BUILDPATH)/$@/plugins/bin/$(BINARY)
 	@mkdir -p $(BUILDPATH)/$@/plugins/etc/
-	@cp $(BINARY).json $(BUILDPATH)/$@/plugins/etc/$(BINARY).conf
+	@cp $(BINARY).json $(BUILDPATH)/$@/plugins/etc/$(BINARY).json
 	@echo "finish build \033[34m$(BUILDPATH)/$@/plugins/bin/$(BINARY)\033[0m\n"
 
 package: 
