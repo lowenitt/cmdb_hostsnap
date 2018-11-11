@@ -21,6 +21,16 @@ make package
 ```
 go run github.com/wusendong/cmdb_hostsnap daemon -c cmdb_hostsnap.json
 ```
+### reload
+
+```
+go run github.com/wusendong/cmdb_hostsnap reload
+```
+### stop
+
+```
+go run github.com/wusendong/cmdb_hostsnap stop
+```
 
 ### development
 
