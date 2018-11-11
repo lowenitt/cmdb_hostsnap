@@ -50,7 +50,6 @@ package:
 tool:
 	rm -rf release/tool
 	mkdir -p release/tool
-	go build -o release/tool/netcollector cmdb_hostsnap/tool/netcollector
 
 gentest:
 	gotests -all -excl main -w $(GO_FILES)
