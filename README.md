@@ -19,7 +19,7 @@ make package
 ### run
 
 ```
-go run github.com/wusendong/cmdb_hostsnap daemon -c cmdb_hostsnap.json
+go run github.com/wusendong/cmdb_hostsnap -c cmdb_hostsnap.json
 ```
 ### reload
 
