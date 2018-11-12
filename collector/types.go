@@ -15,7 +15,7 @@ package collector
 type Collector interface {
 	Run() error
 
-	Stop()
+	Stop() error
 
 	Reload() error
 }

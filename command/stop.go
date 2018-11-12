@@ -17,8 +17,9 @@ import (
 	"os"
 	"syscall"
 
-	"github.com/wusendong/cmdb_hostsnap/pidfile"
 	"gopkg.in/urfave/cli.v1"
+
+	"github.com/wusendong/cmdb_hostsnap/pidfile"
 )
 
 func StopCmd() cli.Command {

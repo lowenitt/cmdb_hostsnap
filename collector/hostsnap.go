@@ -21,6 +21,7 @@ import (
 	"time"
 
 	"github.com/sirupsen/logrus"
+
 	"github.com/wusendong/cmdb_hostsnap/publiser"
 	"github.com/wusendong/cmdb_hostsnap/storage/redis"
 )

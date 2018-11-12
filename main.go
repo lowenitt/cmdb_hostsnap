@@ -17,8 +17,9 @@ import (
 	"os"
 
 	"github.com/sirupsen/logrus"
-	"github.com/wusendong/cmdb_hostsnap/command"
 	"gopkg.in/urfave/cli.v1"
+
+	"github.com/wusendong/cmdb_hostsnap/command"
 )
 
 // app info
@@ -66,14 +67,19 @@ func main() {
 			Usage:  "enable debug logging level",
 			EnvVar: "CMDB_DEBUG",
 		},
+		cli.StringFlag{
+			Name:  "config, c",
+			Usage: "Load configuration form `FILE`",
+		},
 	}
 	a.Commands = []cli.Command{
-		command.DaemonCmd(),
 		command.ReloadCmd(),
 		command.StopCmd(),
 	}
 	a.CommandNotFound = cmdNotFound
 	a.OnUsageError = onUsageError
+
+	a.Action = command.DaemonAction
 
 	if err := a.Run(os.Args); err != nil {
 		message := fmt.Sprintf("Critical error: %v", err)

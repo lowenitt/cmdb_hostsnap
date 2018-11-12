@@ -16,8 +16,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/wusendong/cmdb_hostsnap/storage/redis"
 	redispkg "gopkg.in/redis.v5"
+
+	"github.com/wusendong/cmdb_hostsnap/storage/redis"
 )
 
 type RedisPubliser struct {
