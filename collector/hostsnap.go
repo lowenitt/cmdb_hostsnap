@@ -114,9 +114,9 @@ func (snap *Hostsnap) Reload() error {
 	if err != nil {
 		return fmt.Errorf("NewRedisPubliser error %v", err)
 	}
+	snap.pub.Close()
 
 	logrus.Infof("reload with config: %#v", conf)
-
 	snap.confLock.Lock()
 	snap.pub = pub
 	snap.confLock.Unlock()
