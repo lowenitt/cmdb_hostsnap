@@ -25,7 +25,7 @@ import (
 // app info
 const (
 	AppName = "cmdb_hostsnap"
-	Usage   = "hostsnap"
+	Usage   = "take snapshot for host information and report it via redis channel "
 )
 
 // build info
@@ -51,8 +51,12 @@ func main() {
 
 	a := cli.NewApp()
 	a.Version = Version
-	a.Name = AppName
-	a.Usage = Usage
+	a.Name = Usage
+
+	a.Description = fmt.Sprintf(`
+	BuildCommit : %s
+	BuildTime   : %s
+	GoVersion   : %s`, BuildCommit, BuildTime, GoVersion)
 
 	a.Before = func(c *cli.Context) error {
 		if c.GlobalBool("debug") {
