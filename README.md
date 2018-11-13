@@ -14,6 +14,12 @@ cd $GOPATH/src/github.com/wusendong
 git clone github.com/wusendong/cmdb_hostsnap
 ```
 
+### quick run 
+```
+go build
+./cmdb_hostsnap -c cmdb_hostsnap.json
+```
+
 ### build
 ```
 make linux
