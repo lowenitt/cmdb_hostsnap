@@ -24,7 +24,7 @@ import (
 
 // app info
 const (
-	AppName = "hostsnap"
+	AppName = "cmdb_hostsnap"
 	Usage   = "hostsnap"
 )
 

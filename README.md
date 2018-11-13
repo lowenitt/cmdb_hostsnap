@@ -24,10 +24,10 @@ go build
 ### usage
 ```
 NAME:
-   hostsnap - hostsnap
+   cmdb_hostsnap - hostsnap
 
 USAGE:
-   main [global options] command [command options] [arguments...]
+   cmdb_hostsnap [global options] command [command options] [arguments...]
 
 VERSION:
    0.1.0
