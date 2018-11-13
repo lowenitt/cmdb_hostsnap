@@ -1,9 +1,18 @@
 a bk-cmdb data collector demo
 
 ### init
+
+- via go get
 ```
 go get github.com/wusendong/cmdb_hostsnap
 ```
+
+- via git clone
+```
+mkdir $GOPATH/src/github.com/wusendong
+cd $GOPATH/src/github.com/wusendong
+git clone github.com/wusendong/cmdb_hostsnap
+``
 
 ### build
 ```
