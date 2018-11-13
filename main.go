@@ -68,8 +68,9 @@ func main() {
 			EnvVar: "CMDB_DEBUG",
 		},
 		cli.StringFlag{
-			Name:  "config, c",
-			Usage: "Load configuration form `FILE`",
+			Name:   "config, c",
+			Usage:  "Load configuration form `FILE`",
+			EnvVar: "CMDB_HOSTSNAP_CONFIG",
 		},
 	}
 	a.Commands = []cli.Command{
