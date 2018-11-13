@@ -23,14 +23,15 @@ import (
 
 type RedisPubliser struct {
 	*redispkg.Client
+	channel string
 }
 
-func NewRedisPubliser(conf redis.Config) (*RedisPubliser, error) {
+func NewRedisPubliser(channel string, conf redis.Config) (*RedisPubliser, error) {
 	cli, err := redis.NewFromConfig(conf)
 	if err != nil {
 		return nil, err
 	}
-	return &RedisPubliser{Client: cli}, nil
+	return &RedisPubliser{Client: cli, channel: channel}, nil
 }
 
 func (p *RedisPubliser) PublishEvent(event map[string]interface{}) error {
@@ -38,7 +39,7 @@ func (p *RedisPubliser) PublishEvent(event map[string]interface{}) error {
 	if err != nil {
 		return fmt.Errorf("marshal json failed. error: %v", err)
 	}
-	err = p.Client.Publish("channel", string(message)).Err()
+	err = p.Client.Publish(p.channel, string(message)).Err()
 	if err != nil {
 		return fmt.Errorf("publish to redis failed. error: %v", err)
 	}
@@ -51,7 +52,7 @@ func (p *RedisPubliser) PublishEvents(events []map[string]interface{}) error {
 		if err != nil {
 			return fmt.Errorf("marshal json failed. error: %v", err)
 		}
-		err = p.Client.Publish("channel", string(message)).Err()
+		err = p.Client.Publish(p.channel, string(message)).Err()
 		if err != nil {
 			return fmt.Errorf("publish to redis failed. error: %v", err)
 		}

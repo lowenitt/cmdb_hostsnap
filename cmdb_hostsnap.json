@@ -1,5 +1,5 @@
 {
-    "channel": "discover2",
+    "channel": "snapshot2",
     "redis":{
         "host": "127.0.0.1",
         "usr": "cc",

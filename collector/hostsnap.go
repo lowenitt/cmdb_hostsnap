@@ -47,7 +47,7 @@ func NewHostsnap(configfile string) (*Hostsnap, error) {
 	}
 
 	logrus.Infof("NewHostsnap with config: %#v ", conf)
-	pub, err := publiser.NewRedisPubliser(conf.Redis)
+	pub, err := publiser.NewRedisPubliser(conf.Channel, conf.Redis)
 	if err != nil {
 		return nil, fmt.Errorf("NewRedisPubliser error %v", err)
 	}
@@ -110,7 +110,7 @@ func (snap *Hostsnap) Reload() error {
 	if err != nil {
 		return fmt.Errorf("read config file %s error %v", snap.configfile, err)
 	}
-	pub, err := publiser.NewRedisPubliser(conf.Redis)
+	pub, err := publiser.NewRedisPubliser(conf.Channel, conf.Redis)
 	if err != nil {
 		return fmt.Errorf("NewRedisPubliser error %v", err)
 	}
@@ -300,7 +300,7 @@ const hostsnapExample = `{
 					],
 					"addrs": [
 						{
-							"addr": "127.0.0.1/8"
+							"addr": "192.168.1.7/8"
 						}
 					]
 				},
@@ -315,7 +315,7 @@ const hostsnapExample = `{
 					],
 					"addrs": [
 						{
-							"addr": "127.0.0.1/24"
+							"addr": "192.168.1.2/24"
 						}
 					]
 				}
