@@ -73,7 +73,7 @@ func main() {
 		},
 		cli.StringFlag{
 			Name:   "config, c",
-			Usage:  "Load configuration form `FILE`",
+			Usage:  "Load configuration from `FILE`",
 			EnvVar: "CMDB_HOSTSNAP_CONFIG",
 		},
 	}
