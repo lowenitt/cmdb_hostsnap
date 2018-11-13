@@ -12,7 +12,7 @@ go get github.com/wusendong/cmdb_hostsnap
 mkdir $GOPATH/src/github.com/wusendong
 cd $GOPATH/src/github.com/wusendong
 git clone github.com/wusendong/cmdb_hostsnap
-``
+```
 
 ### build
 ```
