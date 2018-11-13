@@ -17,6 +17,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 	"sync"
 	"time"
 
@@ -76,12 +77,6 @@ func (snap *Hostsnap) Run() error {
 
 	ticker := time.NewTicker(time.Second * 5)
 
-	event := map[string]interface{}{}
-	err := json.Unmarshal([]byte(hostsnapExample), &event)
-	if err != nil {
-		return fmt.Errorf("prepare event failed: %v", err)
-	}
-
 	for {
 		select {
 		case <-snap.ctx.Done():
@@ -89,7 +84,14 @@ func (snap *Hostsnap) Run() error {
 		case <-ticker.C:
 		}
 
-		err := snap.publishEvent(event)
+		mesg := strings.Replace(hostsnapExample, "2017-09-19 16:57:07", time.Now().Format("2006-01-02 15:04:05"), -1)
+		event := map[string]interface{}{}
+		err := json.Unmarshal([]byte(mesg), &event)
+		if err != nil {
+			return fmt.Errorf("prepare event failed: %v", err)
+		}
+
+		err = snap.publishEvent(event)
 		if err != nil {
 			logrus.Errorf("publish error %v", err)
 		}
