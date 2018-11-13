@@ -3,19 +3,19 @@ a bk-cmdb data collector demo
 ### download source code
 
 - via go get
-```
+```bash
 go get github.com/wusendong/cmdb_hostsnap
 ```
 
 - or via git clone
-```
+```bash
 mkdir $GOPATH/src/github.com/wusendong
 cd $GOPATH/src/github.com/wusendong
 git clone github.com/wusendong/cmdb_hostsnap
 ```
 
 ### quick run 
-```
+```bash
 cd $GOPATH/src/github.com/wusendong/cmdb_hostsnap
 go build
 ./cmdb_hostsnap -c cmdb_hostsnap.json
